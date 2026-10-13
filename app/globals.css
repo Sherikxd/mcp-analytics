@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #ffffff;
+  --surface: #fafafa;
+  --surface-2: #f4f4f5;
+  --fg: #0a0a0a;
+  --fg-muted: #52525b;
+  --fg-subtle: #71717a;
+  --line: #e4e4e7;
+  --line-strong: #d4d4d8;
+  --inverse: #0a0a0a;
+  --inverse-fg: #fafafa;
+  --ok: #15803d;
+  --warn: #b45309;
+  --danger: #b91c1c;
+  --info: #1d4ed8;
+}
+
+.dark {
+  --bg: #0a0a0a;
+  --surface: #111113;
+  --surface-2: #17171a;
+  --fg: #fafafa;
+  --fg-muted: #a1a1aa;
+  --fg-subtle: #71717a;
+  --line: #26262a;
+  --line-strong: #3f3f46;
+  --inverse: #fafafa;
+  --inverse-fg: #0a0a0a;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --danger: #f87171;
+  --info: #60a5fa;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-inverse: var(--inverse);
+  --color-inverse-fg: var(--inverse-fg);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100%;
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: var(--fg);
+  color: var(--bg);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.35s ease-out both;
 }
